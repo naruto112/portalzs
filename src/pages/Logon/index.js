@@ -42,7 +42,7 @@ export default function Logon() {
           localStorage.setItem(email);
           localStorage.setItem(ramo);
           localStorage.setItem(record);
-        //   localStorage.setItem(status);
+          localStorage.setItem(status);
 
             
       })
