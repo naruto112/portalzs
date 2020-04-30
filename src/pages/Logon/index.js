@@ -35,6 +35,15 @@ export default function Logon() {
           }
 
           console.log(response.data);
+
+          const { email, nome, ramo, record, status } = response.data;
+
+          localStorage.setItem(email);
+          localStorage.setItem(email);
+          localStorage.setItem(ramo);
+          localStorage.setItem(record);
+          localStorage.setItem(status);
+
             
       })
 
