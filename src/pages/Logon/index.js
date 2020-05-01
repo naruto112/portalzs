@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { useHistory } from 'react-router-dom'
 
 import api from '../../services/api'
 import santanderLogo from '../../assets/santander-logo-2.png';
@@ -7,6 +8,8 @@ import loadingGif from '../../assets/login_loading.gif';
 import './styles.css';
 
 export default function Logon() {
+
+  const history = useHistory();
 
   const [hiddenLogin, setHiddenLogin] = useState(true);
   const [hiddenAlert, setHiddenAlert] = useState(true);
@@ -23,7 +26,7 @@ export default function Logon() {
           return false;
       }
     
-      api.get(`login/sinistro/${sinistro}`)
+      await api.get(`login/sinistro/${sinistro}`)
         .then(response =>{
 
           const { status } = response.data;  
@@ -34,16 +37,14 @@ export default function Logon() {
               setMessage(' Sinistro não localizado');
           }
 
-          console.log(response.data);
+          const { email, nome, ramo, record } = response.data;
+          localStorage.setItem('email', email);
+          localStorage.setItem('nome', nome);
+          localStorage.setItem('ramo', ramo);
+          localStorage.setItem('record', record);
+          localStorage.setItem('status', status);
 
-          const { email, nome, ramo, record, status } = response.data;
-
-          localStorage.setItem(email);
-          localStorage.setItem(email);
-          localStorage.setItem(ramo);
-          localStorage.setItem(record);
-          localStorage.setItem(status);
-
+          history.push("/confirma");
             
       })
 

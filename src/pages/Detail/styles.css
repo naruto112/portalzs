@@ -1,0 +1,48 @@
+.top {
+    background-color: #cc0001;
+    text-align: end;
+    padding: 10px;
+}
+
+.user-image {
+    width: 30px;
+    border-radius: 100%;
+}
+
+.hidden-xs {
+    font-size: 12px;
+    margin-left: 10px;
+    color: #fff
+}
+
+.hidden-large {
+    color: #fff;
+}
+
+.dropmenu {
+    position: absolute; 
+    background-color: #EBEBEB;
+    width: 240px;
+    height: 200px;
+    right: 0;
+    left: auto;
+    border-radius: 2px;
+    display: none;
+}
+
+.dropmenu-btn {
+    background-color: #D2D2D2;
+    text-align: center;
+    top: 2px;
+    height: 150px;
+    padding: 10px;
+}
+
+
+.user-image-drop {
+    display: grid;
+    width: 80px;
+    margin-left: 65px;
+    margin-bottom: 10px;
+    border-radius: 100%;
+}
