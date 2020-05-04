@@ -1,0 +1,20 @@
+version: "3"
+services:
+  app:
+    container_name: portalzs
+    image: node:10
+    ports:
+      - "3000:3000"
+    command: sh -c "npm i && npm run start"
+    working_dir: /app
+    volumes:
+      - .:/app
+    environment:
+      NODE_ENV: development
+    stdin_open: true
+networks:
+  base:
+  mongo:
+
+volumes:
+  mongo:

@@ -16,7 +16,12 @@ export default function Logon() {
   const [message, setMessage] = useState('');
   const [sinistro, setSinistro] = useState('2020-71-29434-0');
 
-  async function LoginSinistro(){
+  const status = localStorage.getItem('status');
+
+    if (status) history.push('/portal');
+
+  async function LoginSinistro(e){
+      e.preventDefault();
 
       setHiddenLogin(false);
       if (!sinistro) {

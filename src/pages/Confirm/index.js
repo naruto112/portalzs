@@ -21,8 +21,8 @@ export default function Confirm() {
 
     
 
-    async function validarMail() {
-
+    async function validarMail(e) {
+        e.preventDefault();
         const data = new FormData();
         data.append('email', mail);
         data.append('record', record);
