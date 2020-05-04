@@ -14,8 +14,7 @@ import "./bower_components/bootstrap-daterangepicker/daterangepicker.css";
 import "./plugins/bootstrap-wysihtml5/bootstrap3-wysihtml5.min.css";
 import "./bower_components/fullcalendar/dist/fullcalendar.min.css";
 import "./bower_components/fullcalendar/dist/fullcalendar.print.min.css";
-
-
+import "./assets/sass/main.scss";
 
 function App() {
   return <Routes />;
