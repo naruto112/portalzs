@@ -1,7 +1,7 @@
 version: "3"
 
 services:
-  client:
+  portalzs:
     container_name: portalzs_client
     image: node:10
     ports:
