@@ -12,9 +12,3 @@ services:
     environment:
       NODE_ENV: development
     stdin_open: true
-networks:
-  base:
-  mongo:
-
-volumes:
-  mongo:
