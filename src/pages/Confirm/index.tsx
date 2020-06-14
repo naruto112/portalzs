@@ -2,8 +2,8 @@ import React, { useState } from "react";
 import { useHistory } from "react-router-dom";
 
 import api from "../../services/api";
-import santanderLogo from "../../assets/santander-logo-2.png";
-import loadingGif from "../../assets/login_loading.gif";
+import santanderLogo from "../../assets/img/santander-logo-2.png";
+import loadingGif from "../../assets/img/login_loading.gif";
 
 
 

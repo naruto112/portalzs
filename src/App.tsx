@@ -1,7 +1,7 @@
 import React from "react";
 import Routes from "./routes";
 
-import "./bower_components/bootstrap/dist/css/bootstrap.min.css";
+import "./assets/sass/base/bootstrap.scss";
 import "./AdminLTE.css";
 import "./assets/sass/main.scss";
 
