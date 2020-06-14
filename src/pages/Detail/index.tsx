@@ -1,8 +1,11 @@
 import React, { useEffect, useState } from "react";
 import { useHistory } from "react-router-dom";
 
-import LogoUser from "../../assets/user2-.jpg";
-import SantanderLogo from "../../assets/santander-logo-2.png";
+import Ramo71 from "./71";
+import Ramo89 from "./89";
+
+import LogoUser from "../../assets/img/user2-.jpg";
+import SantanderLogo from "../../assets/img/santander-logo-2.png";
 import api from "../../services/api";
 
 export default function Detail() {
@@ -19,11 +22,12 @@ export default function Detail() {
   const [telefone, setTelefone] = useState("");
   const [cobertura, setCobertura] = useState("");
   const [apolice, setApolice] = useState("");
+  const [ramo, setRamo] = useState("");
 
   if (!status) history.push("/");
 
   //DropMenu status bar
-  window.onclick = function (event:any) {
+  window.onclick = function (event: any) {
     if (!event.target.matches(".hidden-xs")) {
       let dropdowns = document.getElementsByClassName("dropmenu");
       var i;
@@ -41,10 +45,10 @@ export default function Detail() {
     SinistroDocumento(record);
   }, []);
 
-  async function SinistroDocumento(props:any) {
+  async function SinistroDocumento(props: any) {
     await api.get(`documento/${props}`, {}).then((response) => {
       const data = response.data;
-      // console.log(data[0]);
+
       setNomeSegurado(data[0].nome_segurado);
       setNomeSinistrado(data[0].nome_sinistrado);
       setNomeNotificante(data[0].nome_notificante);
@@ -56,6 +60,7 @@ export default function Detail() {
       setTelefone(data[0].telefone);
       setCobertura(data[0].cobertura_reclamada);
       setApolice(data[0].apolice);
+      setRamo(data[0].ramo);
     });
   }
 
@@ -64,7 +69,7 @@ export default function Detail() {
     history.push("/");
   }
 
-  function DropMenu(e:any) {
+  function DropMenu(e: any) {
     e.preventDefault();
     document.getElementById("myDropdown")!.classList.toggle("show");
   }
@@ -216,18 +221,9 @@ export default function Detail() {
           />
         </div>
       </div>
-
-      <ul className="nav nav-tabs menu-bar">
-        <li id="bar-status">
-          <a href="javascript:TabMenu('status')">Status do Sinistro</a>
-        </li>
-        <li className="active" id="bar-doc">
-          <a href="#">Solicitação de Documentos</a>
-        </li>
-      </ul>
-      <div className="callout-bar documentos">
-        <h4 className="h4-font-size">DOCUMENTOS SOLICITADO PELA SEGURADORA</h4>
-      </div>
+      {/* Exibe o Menu de Acordo com o Ramo */}
+      {ramo === "71" ? <Ramo71 /> : ""}
+      {ramo === "89" ? <Ramo89 /> : ""}
     </div>
   );
 }
