@@ -23,7 +23,7 @@ export default function Detail() {
   if (!status) history.push("/");
 
   //DropMenu status bar
-  window.onclick = function (event) {
+  window.onclick = function (event:any) {
     if (!event.target.matches(".hidden-xs")) {
       let dropdowns = document.getElementsByClassName("dropmenu");
       var i;
@@ -41,7 +41,7 @@ export default function Detail() {
     SinistroDocumento(record);
   }, []);
 
-  async function SinistroDocumento(props) {
+  async function SinistroDocumento(props:any) {
     await api.get(`documento/${props}`, {}).then((response) => {
       const data = response.data;
       // console.log(data[0]);
@@ -64,9 +64,9 @@ export default function Detail() {
     history.push("/");
   }
 
-  function DropMenu(e) {
+  function DropMenu(e:any) {
     e.preventDefault();
-    document.getElementById("myDropdown").classList.toggle("show");
+    document.getElementById("myDropdown")!.classList.toggle("show");
   }
 
   return (
@@ -225,8 +225,8 @@ export default function Detail() {
           <a href="#">Solicitação de Documentos</a>
         </li>
       </ul>
-      <div class="callout-bar documentos">
-        <h4 class="h4-font-size">DOCUMENTOS SOLICITADO PELA SEGURADORA</h4>
+      <div className="callout-bar documentos">
+        <h4 className="h4-font-size">DOCUMENTOS SOLICITADO PELA SEGURADORA</h4>
       </div>
     </div>
   );
