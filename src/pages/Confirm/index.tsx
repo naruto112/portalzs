@@ -5,46 +5,36 @@ import api from "../../services/api";
 import santanderLogo from "../../assets/santander-logo-2.png";
 import loadingGif from "../../assets/login_loading.gif";
 
-export default function Logon() {
-  const history = useHistory();
 
+
+
+
+export default function Confirm() {
+  const history = useHistory();
   const [hiddenLogin, setHiddenLogin] = useState(true);
   const [hiddenAlert, setHiddenAlert] = useState(true);
   const [message, setMessage] = useState("");
-  const [sinistro, setSinistro] = useState("2020-71-29434-0");
+  const [mail, setMail] = useState("desenvolvimento@techmail.com.br");
+  const email = localStorage.getItem("email")!;
+  const record = localStorage.getItem("record")!;
 
-  const status = localStorage.getItem("status");
-
-  if (status) history.push("/portal");
-
-  async function LoginSinistro(e) {
+  async function validarMail(e:any) {
     e.preventDefault();
+    const data = new FormData();
+    data.append("email", mail);
+    data.append("record", record);
 
-    setHiddenLogin(false);
-    if (!sinistro) {
-      setHiddenLogin(true);
-      setHiddenAlert(false);
-      setMessage(" Digite o nº de sinistro");
-      return false;
-    }
-
-    await api.get(`login/sinistro/${sinistro}`).then((response) => {
+    await api.post("validar/email", data, {}).then((response) => {
       const { status } = response.data;
 
       if (!status) {
         setHiddenLogin(true);
         setHiddenAlert(false);
-        setMessage(" Sinistro não localizado");
+        setMessage(" E-mail incorreto");
+        return false;
       }
 
-      const { email, nome, ramo, record } = response.data;
-      localStorage.setItem("email", email);
-      localStorage.setItem("nome", nome);
-      localStorage.setItem("ramo", ramo);
-      localStorage.setItem("record", record);
-      localStorage.setItem("status", status);
-
-      history.push("/confirma");
+      history.push("/portal");
     });
   }
 
@@ -56,15 +46,16 @@ export default function Logon() {
         </div>
 
         <div className="login-box-body">
-          <p className="login-box-msg"></p>
+          <p className="login-box-msg">Complete o e-mail visualizado abaixo:</p>
+          <p className="login-box-msg">
+            <b>{email}</b>
+          </p>
           <div className="form-group has-feedback">
             <input
-              value={sinistro}
-              onChange={(e) => setSinistro(e.target.value)}
-              type="text"
+              value={mail}
+              onChange={(e) => setMail(e.target.value)}
+              type="email"
               className="form-control"
-              placeholder="Digite o Nº Sinistro"
-              maxLength="35"
               style={{ fontWeight: "bold" }}
             />
           </div>
@@ -78,11 +69,11 @@ export default function Logon() {
 
             <div className="col-xs-4">
               <button
-                onClick={LoginSinistro}
+                onClick={validarMail}
                 className="btn btn-primary btn-block btn-flat"
                 style={{ fontFamily: "Open Sans,sans-serif" }}
               >
-                Confirmar
+                Validar
               </button>
             </div>
           </div>
