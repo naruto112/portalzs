@@ -5,10 +5,10 @@ const Ramo = () => {
     <div>
       <ul className="nav nav-tabs menu-bar">
         <li id="bar-status">
-          <a href="javascript:TabMenu('status')">Status do Sinistro</a>
+          <a>Status do Sinistro</a>
         </li>
         <li className="active" id="bar-doc">
-          <a href="#">Solicitação de Documentos</a>
+          <a>Solicitação de Documentos</a>
         </li>
       </ul>
       <div className="callout-bar documentos">

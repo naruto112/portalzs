@@ -25,6 +25,8 @@ export default function Detail() {
   const [apolice, setApolice] = useState("");
   const [ramo, setRamo] = useState("");
 
+  const [documento, setDocumento] = useState("");
+
   if (!status) history.push("/");
 
   //DropMenu status bar
@@ -50,6 +52,8 @@ export default function Detail() {
     await api.get(`documento/${props}`, {}).then((response) => {
       const data = response.data;
 
+      setDocumento(data);
+      console.log(documento);
       setNomeSegurado(data[0].nome_segurado);
       setNomeSinistrado(data[0].nome_sinistrado);
       setNomeNotificante(data[0].nome_notificante);
@@ -227,7 +231,9 @@ export default function Detail() {
         {ramo === "71" ? <Ramo71 /> : ""}
         {ramo === "89" ? <Ramo89 /> : ""}
       </div>
-      <Footer />
+      <div>
+        <Footer />
+      </div>
     </div>
   );
 }
