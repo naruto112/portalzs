@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { useHistory } from "react-router-dom";
 
+import Footer from "../Footer";
 import Ramo71 from "./71";
 import Ramo89 from "./89";
 
@@ -222,8 +223,11 @@ export default function Detail() {
         </div>
       </div>
       {/* Exibe o Menu de Acordo com o Ramo */}
-      {ramo === "71" ? <Ramo71 /> : ""}
-      {ramo === "89" ? <Ramo89 /> : ""}
+      <div className="form-group col-md-12">
+        {ramo === "71" ? <Ramo71 /> : ""}
+        {ramo === "89" ? <Ramo89 /> : ""}
+      </div>
+      <Footer />
     </div>
   );
 }

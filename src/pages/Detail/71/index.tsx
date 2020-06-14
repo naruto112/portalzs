@@ -4,11 +4,42 @@ import React from "react";
 
 const Ramo = () => {
   return (
-    <ul className="nav nav-tabs menu-bar">
+    <div>
+      <ul className="nav nav-tabs menu-bar">
+        <li className="active" id="bar-doc">
+          <a href="javascript:TabMenu('documentos')">
+            Solicitação de Documentos
+          </a>
+        </li>
+      </ul>
+      <br></br>
+      <br></br>
       <div className="callout-bar documentos">
         <h4 className="h4-font-size">DOCUMENTOS SOLICITADO PELA SEGURADORA</h4>
       </div>
-    </ul>
+      <section id="document-menu" className="content resposive-content">
+        <div className="row" id="row">
+          <div className="col-md-12">
+            <ul className="timeline">
+              <li>
+                <div className="timeline-item timeline-item-resposive time-line-responsive">
+                  <div className="timeline-body" id="body-upload">
+                    <ul id="doc-conteudo" className="doc-conteudo">
+                      <div id="alert-tipifica"></div>
+                      <div id="alert-tipifica-not">
+                        <div style={{ textAlign: "center" }}>
+                          Não Existe Documentos
+                        </div>
+                      </div>
+                    </ul>
+                  </div>
+                </div>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </section>
+    </div>
   );
 };
 
