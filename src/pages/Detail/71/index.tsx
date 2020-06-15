@@ -1,8 +1,13 @@
 //Ramo 71
-
 import React from "react";
 
-const Ramo = () => {
+interface Ramo {
+  params: String[];
+}
+
+const Ramo = ({ params }: { params: String[] }) => {
+  console.log(params);
+
   return (
     <div>
       <ul className="nav nav-tabs menu-bar">
