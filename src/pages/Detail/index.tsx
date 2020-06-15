@@ -9,7 +9,7 @@ import LogoUser from "../../assets/img/user2-.jpg";
 import SantanderLogo from "../../assets/img/santander-logo-2.png";
 import api from "../../services/api";
 
-export default function Detail() {
+const Detail: React.FC = () => {
   const history = useHistory();
   const status = localStorage.getItem("status");
   const [nomeSegurado, setNomeSegurado] = useState("");
@@ -24,6 +24,8 @@ export default function Detail() {
   const [cobertura, setCobertura] = useState("");
   const [apolice, setApolice] = useState("");
   const [ramo, setRamo] = useState("");
+
+  const [documento, setDocumento] = useState<String[]>([]);
 
   if (!status) history.push("/");
 
@@ -49,6 +51,8 @@ export default function Detail() {
   async function SinistroDocumento(props: any) {
     await api.get(`documento/${props}`, {}).then((response) => {
       const data = response.data;
+
+      documento.push(data);
 
       setNomeSegurado(data[0].nome_segurado);
       setNomeSinistrado(data[0].nome_sinistrado);
@@ -224,10 +228,14 @@ export default function Detail() {
       </div>
       {/* Exibe o Menu de Acordo com o Ramo */}
       <div className="form-group col-md-12">
-        {ramo === "71" ? <Ramo71 /> : ""}
+        {ramo === "71" ? <Ramo71 params={documento} /> : ""}
         {ramo === "89" ? <Ramo89 /> : ""}
       </div>
-      <Footer />
+      <div>
+        <Footer />
+      </div>
     </div>
   );
-}
+};
+
+export default Detail;

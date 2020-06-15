@@ -1,15 +1,18 @@
 //Ramo 71
-
 import React from "react";
 
-const Ramo = () => {
+interface Ramo {
+  params: String[];
+}
+
+const Ramo = ({ params }: { params: String[] }) => {
+  console.log(params);
+
   return (
     <div>
       <ul className="nav nav-tabs menu-bar">
         <li className="active" id="bar-doc">
-          <a href="javascript:TabMenu('documentos')">
-            Solicitação de Documentos
-          </a>
+          <a>Solicitação de Documentos</a>
         </li>
       </ul>
       <br></br>
@@ -28,7 +31,7 @@ const Ramo = () => {
                       <div id="alert-tipifica"></div>
                       <div id="alert-tipifica-not">
                         <div style={{ textAlign: "center" }}>
-                          Não Existe Documentos
+                          Nenhum documento
                         </div>
                       </div>
                     </ul>
