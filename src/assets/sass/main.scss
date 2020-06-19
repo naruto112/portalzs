@@ -14,13 +14,8 @@
     margin-left: 5%;
 }
 
-//Portal
-
-//Confirm
-
-//Detail
 .top {
-    background-color: #cc0001;
+    background-color: $top-color;
     text-align: end;
     padding: 10px;
 }
@@ -105,5 +100,41 @@
     margin-top: 80px;
 }
 
-// .documentos {
-// }
+.document {
+    display: flex;
+    justify-content: space-between;
+}
+
+.dropzone {
+    width: 20px;
+    margin-right: 50px;
+
+    // img {
+    //     width: 50%;
+    //     height: 50%;
+    //     object-fit: cover;
+    // }
+
+    p {
+        // width: auto;
+        // height: auto;
+        // border-radius: 10px;
+        // border: 1px dashed $dropzone-p-color;
+        // display: flex;
+        // justify-content: center;
+        // align-items: center;
+        // color: #333;
+        // font-size: 10px;
+
+        svg {
+            color: $dropzone-p-svg-color;
+            width: 24px;
+            height: 24px;
+            margin-bottom: 8px;
+        }
+    }
+}
+
+.check-circle {
+    color: #4ecb86;
+}

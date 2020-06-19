@@ -1,12 +1,20 @@
 //Ramo 71
-import React from "react";
+import React, { useState } from "react";
 
-interface Ramo {
-  params: String[];
+import Dropzone from "../../../components/DropZone";
+
+interface Item {
+  tipo_doc: string;
+  noteid: number;
 }
 
-const Ramo = ({ params }: { params: String[] }) => {
-  console.log(params);
+const Ramo = ({ params }: { params: any }) => {
+  const [selectedFile, setSelectedFile] = useState<File>();
+  const [documents, setDocumentos] = useState<Item[]>([]);
+
+  params[0].map((item: Item) => {
+    documents.push(item);
+  });
 
   return (
     <div>
@@ -30,8 +38,16 @@ const Ramo = ({ params }: { params: String[] }) => {
                     <ul id="doc-conteudo" className="doc-conteudo">
                       <div id="alert-tipifica"></div>
                       <div id="alert-tipifica-not">
-                        <div style={{ textAlign: "center" }}>
-                          Nenhum documento
+                        <div>
+                          {documents.length > 0
+                            ? documents.map((item) => (
+                                <div key={item.noteid} className="document">
+                                  {/* <div key={item.noteid}>{item.tipo_doc}</div> */}
+                                  <span>{item.tipo_doc}</span>
+                                  <Dropzone onFileUploaded={setSelectedFile} />
+                                </div>
+                              ))
+                            : "Nenhum documento"}
                         </div>
                       </div>
                     </ul>
